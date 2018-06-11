@@ -1,0 +1,72 @@
+{
+  "name": "handler",
+  "version": "1.0.0",
+  "description": "A BitBrackets project to handler events from a source.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node ./src/app.js",
+    "start-prod": "forever start -al forever.log -o out.log -e err.log ./src/app.js",
+    "eslint": "eslint --ignore-path .gitignore .",
+    "test": "jest",
+    "test-watch": "npm run test -- --watch --notify",
+    "test-cover": "npm run test -- --coverage",
+    "coverage": "npm run test-cover && opn coverage/lcov-report/index.html",
+    "precommit": "lint-staged",
+    "prettier": "prettier --ignore-path .gitignore",
+    "fix:code": "npm run pretest --fix",
+    "fix:assets": "npm run prettier --write",
+    "start": "node ./src/app.js"
+  },
+  "keywords": [
+    "bitbrackets",
+    "event",
+    "handler"
+  ],
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md,scss}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bitbrackets/handler.git"
+  },
+  "author": "code@bitbrackets.io",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/Bitbrackets/handler.git#readme",
+  "dependencies": {
+    "big-integer": "^1.6.28",
+    "bignumber.js": "^6.0.0",
+    "dotenv": "^5.0.1",
+    "forever": "^0.15.3",
+    "jackrabbit": "^4.3.0",
+    "lodash": "^4.17.5",
+    "mongo-oplog": "^2.0.2",
+    "mongoose": "^5.0.14",
+    "mongoose-unique-array": "^0.2.0",
+    "mongoose-unique-validator": "^2.0.0",
+    "rxjs": "^5.5.10"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "jest": "^22.4.3",
+    "leche": "^2.2.3",
+    "mocha": "^5.1.1",
+    "prettier": "1.12.0",
+    "sinon": "^4.5.0",
+    "sinon-mongoose": "^2.1.1"
+  }
+}
